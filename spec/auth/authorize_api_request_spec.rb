@@ -37,7 +37,7 @@ RSpec.describe AuthorizeApiRequest do
         end
 
         it 'raises an InvalidToken error' do
-          expect{ invalid_request_obj.call}
+          expect{ invalid_request_obj.call }
             .to raise_error(ExceptionHandler::InvalidToken, /Invalid token/)
         end
       end
@@ -57,7 +57,7 @@ RSpec.describe AuthorizeApiRequest do
 
       context 'fake token' do
         let(:header) {{'Authorization' => 'foobar'}}
-        subject(:invald_request_obj) {described_class.new(header)}
+        subject(:invalid_request_obj) {described_class.new(header)}
 
         it 'handles JWT::DecodeError' do
           expect { invalid_request_obj.call }
